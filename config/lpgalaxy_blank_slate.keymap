@@ -18,9 +18,9 @@
 #define LOWER_L 1
 #define RAISE_L 2
 #define CORNER_L 3
-#define ADJUST_L 4
+/* #define ADJUST_L 4
 #define NUMPAD_L 5
-
+*/
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
 
@@ -105,8 +105,23 @@ raise_layer {
 #endif
             >;
         };
-
 corner_layer {
+            label = "Corner";
+            bindings = <
+&kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4          &kp N5       &kp N6     &kp N7        &kp N8      &kp N9     &kp N0     &kp BKSP
+&kp DEL     &kp F1     &kp F2    &kp F3      &kp F4          &kp F5       &kp F6     &kp MINUS       &kp EQUAL    &kp LBKT     &kp RBKT  &kp BSLH
+&trans     &kp F7  &kp F8  &kp F9   &kp F10       &kp F11    &kp F12     &kp PG_UP       &kp PG_DN   &kp HOME  &kp END    &trans
+#ifdef TBLE_DUAL_2U
+&trans  &trans        &trans     &trans              &trans                    &trans       &kp C_NEXT         &kp C_VOL_UP &kp C_VOL_DN &kp C_PP
+#elif defined(TBLE_MIT)
+&trans  &trans        &trans     &trans      &trans                &trans             &trans      &kp C_NEXT         &kp C_VOL_UP &kp C_VOL_DN &kp C_PP
+#else
+&trans  &trans        &trans     &trans      &trans          &trans       &trans    &trans  &kp C_NEXT         &kp C_VOL_UP &kp C_VOL_DN &kp C_PP
+#endif
+            >;
+        };
+
+/*corner_layer {
             label = "Corner";
             bindings = <
 &trans &trans     &trans     &trans      &trans          &trans       &trans     &trans         &trans      &trans     &trans     &trans
@@ -152,7 +167,7 @@ numpad_layer {
 &trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          SPACE       SPACE    &trans  &kp KP_N0         &kp KP_N0 &kp KP_DOT &kp KP_ENTER
 #endif
             >;
-        };
+        }; */
 
     };
 };
