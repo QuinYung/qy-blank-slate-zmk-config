@@ -49,14 +49,6 @@
     };
 #endif
 
-conditional_layers {
-	compatible = "zmk,conditional-layers";
-	tri_layer {
-		if-layers = <LOWER_L RAISE_L>;
-		then-layer = <ADJUST_L>;
-	};
-};
-
     keymap {
         compatible = "zmk,keymap";
 
