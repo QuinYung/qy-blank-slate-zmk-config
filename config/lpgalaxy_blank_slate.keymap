@@ -18,7 +18,7 @@
 #define LOWER_L 1
 #define RAISE_L 2
 #define CORNER_L 3
-#define NUMPAD_L 4
+#define NUM_L 4
 /* #define ADJUST_L 5
 
 */
@@ -57,16 +57,16 @@
             label = "Base";
             bindings = <
 #ifdef QWERTY_BASE
- &kp ESC    &kp Q      &kp W      &kp E       &kp R          &kp T          &kp Y            &kp U          &kp I       &kp O      &kp P         &kp BKSP
- &mt LCTRL TAB    &kp A      &kp S      &kp D       &kp F          &kp G          &kp H            &kp J          &kp K       &kp L      &kp SEMI      &kp QUOT
- &kp LSHFT  &kp Z      &kp X      &kp C       &kp V          &kp B          &kp N            &kp M          &kp COMMA   &kp DOT    &kp FSLH      &mt LSHFT RET
+ &kp ESC	&kp Q	&kp W	&kp E	&kp R	&kp T	&kp Y	&kp U	&kp I		&kp O		&kp P		&kp BKSP
+ &mt LCTRL TAB	&kp A	&kp S	&kp D	&kp F	&kp G	&kp H	&kp J	&kp K		&kp L		&kp SEMI	&kp QUOT
+ &kp LSHFT  	&kp Z	&kp X	&kp C	&kp V	&kp B	&kp N	&kp M   &kp COMMA   	&kp DOT    	&kp FSLH	&mt LSHFT RET
 #else
- &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp QUOT      &kp BKSP
- &kp LCTRL TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O         &kp QUOT
- &kp LSHFT  &kp Z      &kp X      &kp C       &kp D          &kp V          &kp K            &kp H          &kp COMMA   &kp DOT    &kp SEMI      &mt RSHFT RET
+ &kp ESC    	&kp Q	&kp W	&kp F	&kp P	&kp B	&kp J	&kp L	&kp U		&kp Y      	&kp QUOT      	&kp BKSP
+ &kp LCTRL TAB	&kp A	&kp R	&kp S	&kp T	&kp G	&kp M	&kp N	&kp E		&kp I      	&kp O         	&kp QUOT
+ &kp LSHFT  	&kp Z	&kp X	&kp C	&kp D	&kp V	&kp K	&kp H	&kp COMMA	&kp DOT		&kp SEMI	&mt RSHFT RET
 #endif
 #ifdef TBLE_DUAL_2U
- &kp LCTRL  &kp LGUI   &kp LALT   &mo LOWER_L         &shifty                        &kp SPACE                &mo RAISE_L   &kp LALT   &kp RGUI      &kp RSHIFT
+ &kp LCTRL  	&kp LGUI   	&kp LALT   	&mo LOWER_L	&shifty	&kp SPACE	&mo RAISE_L   &kp LALT   &kp RGUI      &kp RSHIFT
 #elif defined(TBLE_MIT)
  &mo CORNER_L  &kp LCTRL   &kp LALT  &kp LGUI    &mo LOWER_L          &kp SPACE                   &mo RAISE_L      &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT
 #else
@@ -113,17 +113,17 @@ corner_layer {
 &trans     &trans     &trans     &trans      &trans          &trans       &kp LEFT     &kp DOWN       &kp UP    &kp RIGHT     &trans  &trans
 &trans     &trans  &trans  &trans   &trans       &trans    &trans     &trans       &trans   &trans  &trans    &trans
 #ifdef TBLE_DUAL_2U
-&trans  &kp LCTRL        &kp LALT     &kp LGUI              &kp SPACE                    &mo NUMPAD_L       &trans         &trans &trans &trans
+&trans  &kp LCTRL        &kp LALT     &kp LGUI              &kp SPACE                    &mo NUM_L       &trans         &trans &trans &trans
 #elif defined(TBLE_MIT)
-&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans                SPACE             &mo NUMPAD_L      &trans   &trans &trans &trans
+&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans                SPACE             &mo NUM_L      &trans   &trans &trans &trans
 #else
-&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          SPACE       SPACE    &mo NUMPAD_L  &trans         &trans &trans &trans
+&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          SPACE       SPACE    &mo NUM_L  &trans         &trans &trans &trans
 #endif
             >;
         };
 
-numpad_layer {
-            label = "Numpad";
+num_layer {
+            label = "Num";
             bindings = <
 &trans &trans     &kp UP     &trans      &trans          &trans       &trans     &kp STAR         &kp N7      &kp N8     &kp N9     &kp BACKSPACE
 &trans     &kp LEFT     &kp DOWN     &kp RIGHT      &trans          &trans       &trans     &kp FSLH       &kp N4    &kp N5     &kp N6  &kp PLUS
