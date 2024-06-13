@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define QWERTY_BASE 1
+//#define QWERTY_BASE 1
 
 #define TBLE_ORTHO   1
 // #define TBLE_MIT     1
@@ -17,7 +17,7 @@
 
 #define LOWER_L 1
 #define RAISE_L 2
-#define CORNER_L 3
+//#define CORNER_L 3
 // #define NUM_L 4
 // #define ADJUST_L 4
 
@@ -29,9 +29,7 @@
 / {
     chosen {
        zmk,matrix_transform =
-#ifdef TBLE_DUAL_2U
-                       &dual_2u_transform;
-#elif defined(TBLE_MIT)
+#ifdef TBLE_MIT
                        &mit_transform;
 #else
                        &ortho_transform;
@@ -55,21 +53,24 @@
         base_layer {
             label = "Base";
             bindings = <
-#ifdef QWERTY_BASE
- &kp ESC	&kp Q	&kp W	&kp E	&kp R	&kp T	&kp Y	&kp U	&kp I		&kp O		&kp P		&kp BKSP
- &mt LCTRL TAB	&kp A	&kp S	&kp D	&kp F	&kp G	&kp H	&kp J	&kp K		&kp L		&kp SEMI	&kp QUOT
- &kp LSHFT  	&kp Z	&kp X	&kp C	&kp V	&kp B	&kp N	&kp M   &kp COMMA   	&kp DOT    	&kp FSLH	&mt LSHFT RET
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//|      ESC      |       Q       |       W       |       E       |       R       |       T       |       Y       |       U       |       I       |       O       |       P       |     BKSP      |
+       &kp ESC	        &kp Q	          &kp W	          &kp E	          &kp R	          &kp T	         &kp Y	          &kp U	          &kp I		        &kp O		        &kp P		       &kp BKSP
+//|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+//|  TAB / *LCTRL |       A       |       S       |       D       |       F       |       G       |       H       |       J       |       K       |       L       |       ;       |       '       |
+    &mt LCTRL TAB	      &kp A	          &kp S	          &kp D	          &kp F	          &kp G	          &kp H	          &kp J	          &kp K		        &kp L		       &kp SEMI	       &kp QUOT
+//|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+//|     LSHIFT    |       Z       |       X       |       C       |       V       |       B       |       N       |       M       |       ,       |       .       |       /       |  ENT / *SHFT  |
+       &kp LSHFT  	    &kp Z	          &kp X	          &kp C	          &kp V	          &kp B	          &kp N	          &kp M         &kp COMMA   	   &kp DOT    	   &kp FSLH	    &mt LSHFT RET
+//|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+#ifdef TBLE_MIT
+//|      FN       |      CTRL     |      ALT      |    Win/Cmd    |     LOWER     |             SPACE             |     RAISE     |      LEFT     |     DOWN      |      UP       |     RIGHT     |
+     &mo CORNER_L      &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L              &kp SPACE               &mo RAISE_L      &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
 #else
- &kp ESC    	&kp Q	&kp W	&kp F	&kp P	&kp B	&kp J	&kp L	&kp U		&kp Y      	&kp QUOT      	&kp BKSP
- &kp LCTRL TAB	&kp A	&kp R	&kp S	&kp T	&kp G	&kp M	&kp N	&kp E		&kp I      	&kp O         	&kp QUOT
- &kp LSHFT  	&kp Z	&kp X	&kp C	&kp D	&kp V	&kp K	&kp H	&kp COMMA	&kp DOT		&kp SEMI	&mt RSHFT RET
-#endif
-#ifdef TBLE_DUAL_2U
- &kp LCTRL  	&kp LGUI   	&kp LALT   	&mo LOWER_L	&shifty	&kp SPACE	&mo RAISE_L   &kp LALT   &kp RGUI      &kp RSHIFT
-#elif defined(TBLE_MIT)
- &mo CORNER_L  &kp LCTRL   &kp LALT  &kp LGUI    &mo LOWER_L          &kp SPACE                   &mo RAISE_L      &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT
-#else
- &mo CORNER_L  &kp LCTRL   &kp LALT  &kp LGUI    &mo LOWER_L      &kp SPACE      &kp SPACE          &mo RAISE_L      &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT
+//|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+//|      FN       |      CTRL     |      ALT      |    Win/Cmd    |     LOWER     |      SPACE    |     SPACE     |     RAISE     |      LEFT     |     DOWN      |      UP       |     RIGHT     |
+     &mo CORNER_L      &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L      &kp SPACE      &kp SPACE       &mo RAISE_L       &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #endif
             >;
         };
@@ -77,15 +78,24 @@
 lower_layer {
             label = "Lower";
             bindings = <
-&kp TILDE  &kp EXCL     &kp AT     &kp HASH      &kp DLLR          &kp PRCNT       &kp CARET     &kp AMPS        &kp STAR      &kp LPAR     &kp RPAR     &kp BKSP
-&kp DEL     &kp F1     &kp F2    &kp F3      &kp F4          &kp F5       &kp F6     &kp UNDER       &kp PLUS    &kp LBRC     &kp RBRC  &kp PIPE
-&trans     &kp F7  &kp F8  &kp F9   &kp F10       &kp F11    &kp F12     &kp PG_UP       &kp PG_DN   &kp HOME  &kp END    &trans
-#ifdef TBLE_DUAL_2U
-&trans  &trans        &trans     &trans              &trans                    &trans       &kp C_NEXT         &kp C_VOL_UP &kp C_VOL_DN &kp C_PP
-#elif defined(TBLE_MIT)
-&trans  &trans        &trans     &trans      &trans                &trans             &trans      &kp C_NEXT         &kp C_VOL_UP &kp C_VOL_DN &kp C_PP
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//|      ~      |       P       |       @       |       #       |       $       |       %       |      ^       |       &       |       *       |       (       |       )       |     BKSP    |
+     &kp TILDE      &kp EXCL         &kp AT         &kp HASH        &kp DLLR        &kp PRCNT       &kp CARET       &kp AMPS        &kp STAR      &kp LPAR          &kp RPAR       &kp BKSP
+//|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+//|      DEL    |      F1       |       F2      |       F3      |       F4      |       F5      |       F6     |       _       |       +       |       [       |       ]       |     PIPE    |
+       &kp DEL       &kp F1           &kp F2          &kp F3          &kp F4          &kp F5          &kp F6        &kp UNDER       &kp PLUS        &kp LBRC        &kp RBRC       &kp PIPE
+//|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+//|             |      F7       |       F8      |       F9      |       F10     |       F11     |      F12     |       PUP     |       PDN     |       HOME    |       END     |             |
+      &trans        &kp F7            &kp F8          &kp F9          &kp F10         &kp F11        &kp F12        &kp PG_UP       &kp PG_DN       &kp HOME        &kp END         &trans
+//|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+#ifdef TBLE_MIT
+//|             |               |               |               |               |                              |               |      NEXT     |       VOL-    |      VOL+     |  Pause/Play |
+        &trans        &trans          &trans         &trans          &trans                  &trans                 &trans          &kp C_NEXT    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_PP
 #else
-&trans  &trans        &trans     &trans      &trans          &trans       &trans    &trans  &kp C_NEXT         &kp C_VOL_UP &kp C_VOL_DN &kp C_PP
+//|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+//|             |               |               |               |               |               |              |               |      NEXT     |       VOL-    |      VOL+     |  Pause/Play |
+        &trans        &trans          &trans         &trans          &trans           &trans    |    &trans    |    &trans          &kp C_NEXT    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_PP
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #endif
             >;
         };
@@ -105,6 +115,7 @@ raise_layer {
 #endif
             >;
         };
+/*
 corner_layer {
             label = "Corner";
             bindings = <
@@ -120,7 +131,6 @@ corner_layer {
 #endif
             >;
         };
-/*
 num_layer {
             label = "Num";
             bindings = <
