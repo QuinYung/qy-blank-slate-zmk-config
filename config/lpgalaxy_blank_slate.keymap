@@ -17,9 +17,9 @@
 
 #define LOWER_L 1
 #define RAISE_L 2
+#define ADJUST_L 3
 //#define CORNER_L 3
 // #define NUM_L 4
-// #define ADJUST_L 4
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
@@ -37,15 +37,13 @@
     };
 
 // Conditional layer only when we have less thumb keys
-#ifdef TBLE_DUAL_2U
     cond_layers {
         compatible = "zmk,conditional-layers";
 	tri {
-	    if-layers = <NUM_L NAV_L>;
-	    then-layer = <SYM_L>;
+	    if-layers = <LOWER_L RAISE_L>;
+	    then-layer = <ADJUST_L>;
         };
     };
-#endif
 
     keymap {
         compatible = "zmk,keymap";
@@ -113,6 +111,22 @@ raise_layer {
 #endif
             >;
         };
+adjust_layer {
+
+            label = "Adjust";
+            bindings = <
+&bt BT_CLR &kp C_BRI_DN     &kp C_BRI_UP     &trans      &trans          &trans       &trans     &kp C_MUTE         &kp C_VOL_DN      &kp C_VOL_UP     &trans     &bootloader
+&trans     &trans     &trans     &trans      &trans          &trans       &trans     &trans       &trans    &trans     &trans  &trans
+&trans     &bt BT(0)  &bt BT(1)  &bt BT(2)   &bt BT(3)       &bt BT(4)    &trans     &trans       &trans   &trans  &trans    &trans
+#ifdef TBLE_MIT
+&trans  &trans        &trans     &trans      &trans                &trans             &trans      &trans   &trans &trans &trans
+#else
+&trans  &trans        &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans &trans &trans
+#endif
+            >;
+        };
+
+
 /*
 corner_layer {
             label = "Corner";
@@ -144,21 +158,7 @@ num_layer {
         };
 
 
-adjust_layer {
-            label = "Adjust";
-            bindings = <
-&bt BT_CLR &kp C_BRI_DN     &kp C_BRI_UP     &trans      &trans          &trans       &trans     &kp C_MUTE         &kp C_VOL_DN      &kp C_VOL_UP     &trans     &bootloader
-&trans     &trans     &trans     &trans      &trans          &trans       &trans     &trans       &trans    &trans     &trans  &trans
-&trans     &bt BT(0)  &bt BT(1)  &bt BT(2)   &bt BT(3)       &bt BT(4)    &trans     &trans       &trans   &trans  &trans    &trans
-#ifdef TBLE_DUAL_2U
-&trans  &trans        &trans     &trans              &trans                    &trans       &trans         &trans &trans &trans
-#elif defined(TBLE_MIT)
-&trans  &trans        &trans     &trans      &trans                &trans             &trans      &trans   &trans &trans &trans
-#else
-&trans  &trans        &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans &trans &trans
-#endif
-            >;
-        };
+
 */
 
     };
