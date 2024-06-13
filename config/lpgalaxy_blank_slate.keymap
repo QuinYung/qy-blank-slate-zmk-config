@@ -62,11 +62,11 @@
 //|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 #ifdef TBLE_MIT
 //|      FN       |      CTRL     |      ALT      |    Win/Cmd    |     LOWER     |             SPACE             |     RAISE     |      LEFT     |     DOWN      |      UP       |     RIGHT     |
-      &mo FUN_L        &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L              &kp SPACE               &mo RAISE_L      &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
+      &mo FUNC_L        &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L              &kp SPACE               &mo RAISE_L      &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
 #else
 //|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 //|      FN       |      CTRL     |      ALT      |    Win/Cmd    |     LOWER     |      SPACE    |     SPACE     |     RAISE     |      LEFT     |     DOWN      |      UP       |     RIGHT     |
-      &mo FUN_L       &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L        &kp SPACE      &kp SPACE       &mo RAISE_L       &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
+      &mo FUNC_L       &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L        &kp SPACE      &kp SPACE       &mo RAISE_L       &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #endif
             >;
