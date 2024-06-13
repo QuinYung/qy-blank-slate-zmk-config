@@ -18,8 +18,8 @@
 #define LOWER_L 1
 #define RAISE_L 2
 #define ADJUST_L 3
-#define FUN_L 4
-// #define NUM_L 4
+#define FUNC_L 4
+#define NUM_L 5
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
@@ -49,7 +49,6 @@
         compatible = "zmk,keymap";
 
         base_layer {
-            label = "Base";
             bindings = <
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //|      ESC      |       Q       |       W       |       E       |       R       |       T       |       Y       |       U       |       I       |       O       |       P       |     BKSP      |
@@ -74,7 +73,6 @@
         };
 
 lower_layer {
-            label = "Lower";
             bindings = <
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //|      ~      |       P       |       @       |       #       |       $       |       %       |      ^       |       &       |       *       |       (       |       )       |     BKSP    |
@@ -99,7 +97,6 @@ lower_layer {
         };
 
 raise_layer {
-            label = "Raise";
             bindings = <
 &kp GRAVE  &kp N1     &kp N2     &kp N3      &kp N4          &kp N5       &kp N6     &kp N7        &kp N8      &kp N9     &kp N0     &kp BKSP
 &kp DEL     &kp F1     &kp F2    &kp F3      &kp F4          &kp F5       &kp F6     &kp MINUS       &kp EQUAL    &kp LBKT     &kp RBKT  &kp BSLH
@@ -113,7 +110,6 @@ raise_layer {
         };
 adjust_layer {
 
-            label = "Adjust";
             bindings = <
 &bt BT_CLR &kp C_BRI_DN     &kp C_BRI_UP     &trans      &trans          &trans       &trans     &kp C_MUTE         &kp C_VOL_DN      &kp C_VOL_UP     &trans     &bootloader
 &trans     &trans     &trans     &trans      &trans          &trans       &trans     &trans       &trans    &trans     &trans  &trans
@@ -126,42 +122,36 @@ adjust_layer {
             >;
         };
 
- fun_layer {
-            label = "Fun";
+func_layer {
+            bindings = <
+&trans &trans     &trans     &trans      &trans          &trans       &trans     &trans         &trans      &trans     &trans     &trans
+&trans     &trans     &trans     &trans      &trans          &trans       &kp LEFT     &kp DOWN       &kp UP    &kp RIGHT     &trans  &trans
+&trans     &trans  &trans  &trans   &trans       &trans    &trans     &trans       &trans   &trans  &trans    &trans
+#ifdef TBLE_MIT
+&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans                &kp SPACE             &mo NUM_L      &trans   &trans &trans &trans
+#else
+&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          &kp SPACE       &kp SPACE    &mo NUM_L  &trans         &trans &trans &trans
+#endif
+            >;
+        };
+
+ num_layer {
             bindings = <
 &trans &trans     &kp UP     &trans      &trans          &trans       &trans     &kp STAR         &kp N7      &kp N8     &kp N9     &kp BACKSPACE
 &trans     &kp LEFT     &kp DOWN     &kp RIGHT      &trans          &trans       &trans     &kp FSLH       &kp N4    &kp N5     &kp N6  &kp PLUS
 &trans     &trans  &trans  &trans   &trans       &trans    &trans     &kp MINUS       &kp N1   &kp N2  &kp N3    &kp ENTER
 #ifdef TBLE_MIT
-&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans                SPACE             &trans      &kp N0         &kp N0 &kp DOT &kp ENTER
+&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans                &kp SPACE             &trans      &kp N0         &kp N0 &kp DOT &kp ENTER
 #else
-&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          SPACE       SPACE    &trans  &kp N0         &kp N0 &kp DOT &kp ENTER
+&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          &kp SPACE       &kp SPACE    &trans  &kp N0         &kp N0 &kp DOT &kp ENTER
 #endif
             >;
         };
 
       
 
-/*
-   fun_layer {
-            label = "Fun";
-            bindings = <
-&trans &trans     &trans     &trans      &trans          &trans       &trans     &trans         &trans      &trans     &trans     &trans
-&trans     &trans     &trans     &trans      &trans          &trans       &kp LEFT     &kp DOWN       &kp UP    &kp RIGHT     &trans  &trans
-&trans     &trans  &trans  &trans   &trans       &trans    &trans     &trans       &trans   &trans  &trans    &trans
-#ifdef TBLE_MIT
-&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans                SPACE             &trans      &trans   &trans &trans &trans
-#else
-&trans  &kp LCTRL        &kp LALT     &kp LGUI      &trans          SPACE       SPACE    &trans  &trans         &trans &trans &trans
-#endif
-            >;
-        };
+   
  
-
-
-
-*/
-
     };
 };
 
