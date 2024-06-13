@@ -18,7 +18,7 @@
 #define LOWER_L 1
 #define RAISE_L 2
 #define ADJUST_L 3
-//#define CORNER_L 3
+#define CORNER_L 4
 // #define NUM_L 4
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
@@ -67,7 +67,7 @@
 #else
 //|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 //|      FN       |      CTRL     |      ALT      |    Win/Cmd    |     LOWER     |      SPACE    |     SPACE     |     RAISE     |      LEFT     |     DOWN      |      UP       |     RIGHT     |
-      &trans          &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L      &kp SPACE      &kp SPACE       &mo RAISE_L       &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
+    &mo CORNER_L       &kp LCTRL       &kp LALT        &kp LGUI      &mo LOWER_L      &kp SPACE      &kp SPACE       &mo RAISE_L       &kp LEFT       &kp DOWN         &kp UP         &kp RIGHT
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #endif
             >;
@@ -126,8 +126,6 @@ adjust_layer {
             >;
         };
 
-
-/*
 corner_layer {
             label = "Corner";
             bindings = <
@@ -141,6 +139,10 @@ corner_layer {
 #endif
             >;
         };
+        
+
+/*
+
 num_layer {
             label = "Num";
             bindings = <
